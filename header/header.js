@@ -22,6 +22,8 @@ angular
 			`,
 			link:function(scope){
 				var hash = $location.$$path;
+				console.log(hash);
+
 				hash = hash.split("/")[1];
 				scope.arr = ["pro","prd","con"]
 				scope.current = hash,
