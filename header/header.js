@@ -22,14 +22,16 @@ angular
 			`,
 			link:function(scope){
 				var hash = $location.$$path;
-				if(hash === ' '){
+				console.log(hash);
+				if(hash === '/'){
 					scope.current = "pro"
-				}
-				hash = hash.split("/")[1];
-				scope.arr = ["pro","prd","con"]
-				scope.current = hash,
-				scope.ctab = function(num){
-					scope.current = scope.arr[num-1];
+				}else{
+					hash = hash.split("/")[1];
+					scope.arr = ["pro","prd","con"]
+					scope.current = hash,
+					scope.ctab = function(num){
+						scope.current = scope.arr[num-1];
+					}
 				}
 			}
 		}
