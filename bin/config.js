@@ -1,4 +1,4 @@
-angular.module("app", ["ui.router","headerModule","infoModule","colokModule","codeModule"])
+angular.module("app", ["ui.router","headerModule","infoModule","colokModule","codeModule","flyModule"])
 	//将$stateProvider和$urlRouterProvider注入到myApp中
 	.config(function($stateProvider, $urlRouterProvider) {
 		//设置路由默认的路径
@@ -24,4 +24,9 @@ angular.module("app", ["ui.router","headerModule","infoModule","colokModule","co
 				url: "/code",
 				template: "<code></code>"
 			})
+			.state("prd.fly", {
+				url: "/fly",
+				template: "<fly></fly>"
+			})
+
 	});
