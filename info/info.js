@@ -28,8 +28,11 @@ angular
 			replace: true,
 			scope: {},
 			template: `
-					<div >
-            <h1>还在开发中………………</h1>
+					<div style="margin-left:100px">
+            <h1>使用微信扫一扫</h1>
+						<img src="./images/二维码(1).png" alt="使用微信扫一扫" style="display: inline-block;vertical-align: middle"/>
+						<span><b>邮箱：</b>13880605025@163.com</span><br/>
+						<span><b>继续完善中…………</b></span>
           </div>
 			`
 		}

@@ -81,3 +81,41 @@ body,html{
   display: inline-block;
   margin-left: 20px;
 }
+.fly-cvs{
+  position: relative;
+  width: 650px;
+  height: 568px;
+  overflow: hidden;
+}
+.fly-start{
+  background-image:url("./images/fly/开始背景.png");
+  width: 320px;
+  height: 568px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.fly-btn{
+  width: 150px;
+  height: 50px;
+  border: 2px solid #fff;
+  background-color:transparent;
+  border-radius: 20px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: 80px;
+  outline: none;
+  cursor: pointer;
+}
+.fly-myself{
+  background-image: url("./images/fly/我的飞机.gif");
+  width: 66px;
+  height: 80px;
+  position: absolute;
+  left: 130px;
+  bottom: 0;
+  outline: none;
+  cursor: pointer;
+}
