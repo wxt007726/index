@@ -8,16 +8,30 @@ angular
 			template: `
 				<div >
 					<canvas width="80" height="30" id="cvs" style="background-color:#CCC;vertical-align: middle"></canvas>
-					<span style="font-size:14px;color:blue">看不清楚，点击图片换一张</span>
+					<input type="text" ng-model="data.val" ng-keyup = "yanzhen()"><span>{{data.text}}</span>
 				</div>
 				`,
 			link:function(scope){
+				scope.data={
+					code:"",
+					val:"",
+					text:'看不清楚换一张'
+				}
+				scope.yanzhen = function(){
+					if(scope.data.val.length === 4){
+						if(scope.data.val ===scope.data.code){
+							scope.data.text='验证码正确'
+						}else{
+							scope.data.text='验证码错误，请重新输入';
+							scope.data.val = ' '
+						}
+					}
+				}
 				var ctx = cvs.getContext("2d");
 				ctx.font = "20px Georgia";
 				var code = drawCode();
 				cvs.onclick = function() {
 						code = drawCode();
-						console.log(code)
 				}
 				function drawCode() {
 						ctx.clearRect(0, 0, 80, 30);
@@ -39,6 +53,8 @@ angular
 								code += strCode;
 								ctx.strokeText(strCode, i * 20, 20);
 						}
+						scope.data.code = code;
+						console.log(scope.data.code);
 						return code;
 				}
 

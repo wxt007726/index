@@ -47,7 +47,8 @@ angular
         <ul>
           <li ui-sref="prd.colok">时钟</li>
 					<li ui-sref="prd.code">验证码</li>
-          <li ui-sref="prd.fly">飞机大战</li>
+					<li ui-sref="prd.fly">飞机大战</li>
+          <li >你画我猜</li>
         </ul>
         <div ui-view class="prd-div"></div>
       </div>

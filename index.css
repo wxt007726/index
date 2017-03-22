@@ -119,3 +119,8 @@ body,html{
   outline: none;
   cursor: pointer;
 }
+#cvs1{
+  position: absolute;
+  left: 0;
+  bottom: 0
+}

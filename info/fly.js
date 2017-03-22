@@ -8,7 +8,7 @@ angular
 			template: `
 				<div class="fly-cvs">
           <canvas id="cvs"  width="320" height="568" style="background-color:#ccc;overflow: hidden"></canvas>
-          <canvas id="cvs1"  width="320" height="568" style="background-color:#ccc;overflow: hidden"></canvas>
+          <canvas id="cvs1"  width="320" height="568" style="overflow: hidden"></canvas>
           <div class = "fly-myself" id="fly-myself"></div>
           <div class="fly-start" ng-show="data.hid"><button class="fly-btn" ng-click="hide()">{{data.text}}</button></div>
 				</div>
@@ -18,7 +18,9 @@ angular
             text:"开始游戏",
             sscre:0,
             hid:true,
-            speed:1
+            speed:1,
+            dX:0,
+            dY:0
           }
           scpoe.hide = function(){
             scpoe.data.hid = false;
@@ -39,7 +41,9 @@ angular
           var ctx1 = cvs1.getContext("2d");
           //让背景图动起来
           var timer;
+          var timer1;
           var bgh = 0;
+          var flyh = 0;
           var speed = scpoe.data.speed;
           typeof speed;
           function bgmove(speed){
@@ -47,22 +51,33 @@ angular
               bgh += speed;
               ctx.drawImage(bgimg,0,bgh,320,568);
               ctx.drawImage(bgimg,0,bgh-568,320,568);
-              ctx.drawImage(bullet,160,400-1,6,14);
               if(bgh === 568){
                 bgh = 0
               }
             },16.67)
           }
             //鼠标移动
-            cvs.onmouseenter = function(e){
-              ctx1.drawImage(myfly2,0,0,110,164);
-              ctx1.drawImage(myfly1,120,0,32,24);
-              ctx1.drawImage(myfly3,150,0,46,60);
 
-              cvs.onmousemove = (e)=>{
-                ctx1.drawImage(bullet,e.clientX-150,e.clientY-120,6,14);
+            cvs1.onmouseenter = function(e){
+              scpoe.data.dX = e.clientX-150;
+              scpoe.data.dY = e.clientY-120;
+              ctx1.drawImage(myfly3,150,flyh-50,46,60);
+
+
+              timer = setInterval(function(num){
+                ctx1.clearRect(0,flyh-150,110,164)
+                flyh += 0.5;
+                ctx1.drawImage(myfly2,0,flyh-150,110,164);
+                if(flyh === 568+150){
+                  flyh = 0
+                }
+              },25)
+
+              cvs1.onmousemove = (e)=>{
                 myown.style.left = e.clientX-180 + 'px';
                 myown.style.top = e.clientY-100 + 'px';
+                scpoe.data.dX = e.clientX-150;
+                scpoe.data.dY = e.clientY-120;
               }
             }
         }
